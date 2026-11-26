@@ -1,0 +1,57 @@
+from django.contrib import admin
+from django.apps import AppConfig
+
+class PortalConfig(AppConfig):
+    default_auto_field = "django.db.models.BigAutoField"
+    name = "portal"
+  from django.db import models
+from django.test import TestCase
+from django.urls import reverse
+
+
+class PortalPageTests(TestCase):
+    def test_home_page_loads(self):
+        response = self.client.get(reverse("home"))
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Welcome to NOVA Campus")
+
+    def test_about_page_loads(self):
+        response = self.client.get(reverse("about"))
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "About NOVA Campus")
+  from django.shortcuts import render
+
+
+def home(request):
+    features = [
+        {
+            "number": "01",
+            "title": "Student Resources",
+            "description": "Find helpful learning materials, class reminders, and useful academic links in one place.",
+            "icon": "✦",
+        },
+        {
+            "number": "02",
+            "title": "Campus Updates",
+            "description": "Stay informed about announcements, upcoming activities, and important campus news.",
+            "icon": "◈",
+        },
+        {
+            "number": "03",
+            "title": "Student Support",
+            "description": "Know where to find guidance, support services, and answers to common student questions.",
+            "icon": "♡",
+        },
+    ]
+    return render(request, "portal/home.html", {"features": features})
+
+
+def about(request):
+    values = [
+        "Clear navigation with consistent page layout",
+        "Readable text, strong color contrast, and visible focus states",
+        "Responsive design for desktop, tablet, and mobile screens",
+        "Reusable templates that make future updates easier",
+    ]
+    return render(request, "portal/about.html", {"values": values})
+  
