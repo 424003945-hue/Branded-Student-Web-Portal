@@ -1,0 +1,39 @@
+{% extends "portal/base.html" %}
+{% block title %}About | NOVA Campus{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+    <div class="container">
+        <p class="eyebrow"><span class="eyebrow-line"></span> GET TO KNOW US</p>
+        <h1>About <span>NOVA Campus</span></h1>
+        <p>A student-focused portal designed to make campus information easier to find and use.</p>
+    </div>
+</section>
+
+<section class="about-section">
+    <div class="container about-grid">
+        <article class="about-card">
+            <p class="eyebrow">OUR PURPOSE</p>
+            <h2>A clearer way to stay connected.</h2>
+            <p>NOVA Campus brings student resources, campus updates, and support information into one organized website. The goal is to make everyday information feel more accessible, welcoming, and simple to navigate.</p>
+            <p>This sample portal is built with Django templates. Shared page elements are kept in one base template, so the design stays consistent as the website grows.</p>
+        </article>
+        <aside class="values-card">
+            <p class="eyebrow">DESIGN PROMISE</p>
+            <h2>Built with students in mind</h2>
+            <ul>
+                {% for value in values %}
+                    <li><span aria-hidden="true">✓</span>{{ value }}</li>
+                {% endfor %}
+            </ul>
+        </aside>
+    </div>
+</section>
+
+<section class="bottom-banner">
+    <div class="container banner-inner">
+        <div><p class="eyebrow">KEEP EXPLORING</p><h2>There is a place for you at NOVA.</h2></div>
+        <a class="button button-light" href="{% url 'home' %}">Back to home <span aria-hidden="true">→</span></a>
+    </div>
+</section>
+{% endblock %}
