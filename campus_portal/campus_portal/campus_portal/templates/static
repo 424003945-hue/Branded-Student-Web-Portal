@@ -1,0 +1,47 @@
+{% extends "portal/base.html" %}
+{% load static %}
+{% block title %}Home | NOVA Campus{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="container hero-grid">
+        <div class="hero-copy">
+            <p class="eyebrow"><span class="eyebrow-line"></span> YOUR CAMPUS, ONE PORTAL</p>
+            <h1>Welcome to <span>NOVA Campus</span></h1>
+            <p class="hero-text">A simple and friendly space to stay connected with campus life, discover student resources, and keep up with what matters.</p>
+            <div class="hero-actions">
+                <a class="button button-primary" href="#features">Explore portal <span aria-hidden="true">→</span></a>
+                <a class="button button-secondary" href="{% url 'about' %}">About us</a>
+            </div>
+            <div class="hero-note"><span class="status-dot"></span> Learn. Connect. Move forward.</div>
+        </div>
+        <div class="hero-art" aria-label="NOVA Campus emblem">
+            <div class="art-glow"></div>
+            <img src="{% static 'images/nova-campus-logo.png' %}" alt="NOVA Campus shield logo with an open book and rising star">
+            <div class="art-caption"><strong>One community.</strong><span>Many possibilities.</span></div>
+        </div>
+    </div>
+</section>
+
+<section class="features-section" id="features">
+    <div class="container">
+        <div class="section-heading">
+            <p class="eyebrow">WHAT YOU CAN FIND</p>
+            <h2>Made for your campus journey</h2>
+            <p>Useful information and support, brought together in one welcoming place.</p>
+        </div>
+        <div class="feature-grid">
+            {% for feature in features %}
+                {% include "portal/partials/feature_card.html" with feature=feature %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="bottom-banner">
+    <div class="container banner-inner">
+        <div><p class="eyebrow">START HERE</p><h2>Your next step starts with a click.</h2></div>
+        <a class="button button-light" href="{% url 'about' %}">Discover NOVA <span aria-hidden="true">→</span></a>
+    </div>
+</section>
+{% endblock %}
